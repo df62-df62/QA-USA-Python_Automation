@@ -11,36 +11,36 @@ class TestUrbanRoutes:
 
     def test_set_route(self):
         # Add in S8
-        print("function created for set route")
+        #print("function created for set route")
         pass
 
     def test_select_plan(self):
         # Add in S8
-        print("function created for set route")
+        #print("function created for set route")
         pass
 
     def test_fill_phone_number(self):
         # Add in S8
-        print("function created for set route")
+        #print("function created for set route")
         pass
 
     def test_fill_card(self):
         # Add in S8
-        print("function created for set route")
+        #print("function created for set route")
         pass
 
     def test_comment_for_driver(self):
         # Add in S8
-        print("function created for set route")
+        #print("function created for set route")
         pass
 
     def test_order_blanket_and_handkerchiefs(self):
         # Add in S8
-        print("function created for set route")
+        #print("function created for set route")
         pass
 
     def test_order_2_ice_creams(self):
-        print("function created for set route")
+        #print("function created for set route")
         for i in range(2):
             print(f"Ice cream order {i + 1}")
             # Add in S8
@@ -48,5 +48,5 @@ class TestUrbanRoutes:
 
     def test_car_search_model_appears(self):
         # Add in S8
-        print("function created for set route")
+        # print("function created for set route")
         pass
