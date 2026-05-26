@@ -26,11 +26,6 @@ class TestUrbanRoutes:
         assert to_text == data.ADDRESS_TO
 
     def test_select_plan(self):
-        #from_text = self.routes_page.set_from_location(data.ADDRESS_FROM)
-        #assert from_text == data.ADDRESS_FROM
-        #to_text = self.routes_page.set_to_location(data.ADDRESS_TO)
-        #assert to_text == data.ADDRESS_TO
-
         self.routes_page.click_call_a_taxi()
         sup_plan_element = self.routes_page.click_supportive_plan()
         assert "active" in sup_plan_element
@@ -45,7 +40,6 @@ class TestUrbanRoutes:
         self.routes_page.click_confirm()
         assert self.driver.find_element(*self.routes_page.PHONE_NUMBER_LOCATOR).text == data.PHONE_NUMBER
         time.sleep(3)
-
 
     def test_fill_card(self):
         self.routes_page.click_payment_method()

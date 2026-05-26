@@ -33,7 +33,6 @@ class UrbanRoutesPage:
     ORDER_LOCATOR = (By.XPATH, '//button[@class="smart-button"]')
     CAR_SEARCH_MODAL_LOCATOR = (By.XPATH, '//div[@class="order-body"]')
 
-
     def __init__(self, driver):
         self.driver = driver  # Initialize the driver
 
@@ -108,7 +107,6 @@ class UrbanRoutesPage:
         self.driver.find_element(*self.EXIT_CC_LOCATOR).click()
         time.sleep(3)
         #self.driver.execute_script("arguments[0].click();", exit_element)
-
 
     def enter_message_to_driver(self, driver_message_text):
         self.driver.find_element(*self.MESSAGE_TO_DRIVER_LOCATOR).send_keys(driver_message_text)
