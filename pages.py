@@ -36,7 +36,7 @@ class UrbanRoutesPage:
 
     def set_from_location(self, from_text):
         WebDriverWait(self.driver, 10).until(
-            EC.presence_of_element_located((By.ID, "from"))
+            EC.presence_of_element_located(self.FROM_LOCATOR)
         )
         self.driver.find_element(*self.FROM_LOCATOR).send_keys(from_text)
         from_value = self.driver.find_element(*self.FROM_LOCATOR).get_attribute("value")
@@ -44,7 +44,7 @@ class UrbanRoutesPage:
 
     def set_to_location(self, to_text):
         WebDriverWait(self.driver, 10).until(
-            EC.presence_of_element_located((By.ID, "to"))
+            EC.presence_of_element_located(self.TO_LOCATOR)
         )
         self.driver.find_element(*self.TO_LOCATOR).send_keys(to_text)
         to_value = self.driver.find_element(*self.TO_LOCATOR).get_attribute("value")
@@ -52,14 +52,14 @@ class UrbanRoutesPage:
 
     def click_call_a_taxi(self):
         WebDriverWait(self.driver, 10).until(
-            EC.element_to_be_clickable((By.XPATH, '//button[text()="Call a taxi"]'))
+            EC.element_to_be_clickable(self.CALL_A_TAXI_LOCATOR)
         )
         self.driver.find_element(*self.CALL_A_TAXI_LOCATOR).click()
 
     def click_supportive_plan(self):
         supp_plan_element = self.driver.find_element(*self.SUPPORTIVE_PLAN_LOCATOR)
         WebDriverWait(self.driver, 10).until(
-            EC.element_to_be_clickable((By.XPATH, '//div[contains(@class, "tcard-title") and text()="Supportive"]/..'))
+            EC.element_to_be_clickable(self.SUPPORTIVE_PLAN_LOCATOR)
         )
         supp_plan_element.click()
         supportive_plan_text = self.driver.find_element(*self.SUPPORTIVE_PLAN_PRICE_LOCATOR).text
@@ -67,7 +67,7 @@ class UrbanRoutesPage:
 
     def click_enter_phone_number(self):
         WebDriverWait(self.driver, 10).until(
-            EC.element_to_be_clickable((By.XPATH, '//div[@class="np-text"]'))
+            EC.element_to_be_clickable(self.PHONE_NUMBER_LOCATOR)
         )
         self.driver.find_element(*self.PHONE_NUMBER_LOCATOR).click()
 
@@ -76,7 +76,7 @@ class UrbanRoutesPage:
 
     def click_next(self):
         WebDriverWait(self.driver, 10).until(
-            EC.element_to_be_clickable((By.XPATH, '//button[text()="Next"]'))
+            EC.element_to_be_clickable(self.NEXT_LOCATOR)
         )
         self.driver.find_element(*self.NEXT_LOCATOR).click()
 
@@ -85,7 +85,7 @@ class UrbanRoutesPage:
 
     def click_confirm(self):
         WebDriverWait(self.driver, 10).until(
-            EC.element_to_be_clickable((By.XPATH, '//button[text()="Confirm"]'))
+            EC.element_to_be_clickable(self.CONFIRM_LOCATOR)
         )
         self.driver.find_element(*self.CONFIRM_LOCATOR).click()
 
@@ -94,13 +94,13 @@ class UrbanRoutesPage:
 
     def click_payment_method(self):
         WebDriverWait(self.driver, 10).until(
-            EC.element_to_be_clickable((By.XPATH, '//div[@class="pp-text"]'))
+            EC.element_to_be_clickable(self.PAYMENT_METHOD_LOCATOR)
         )
         self.driver.find_element(*self.PAYMENT_METHOD_LOCATOR).click()
 
     def click_add_card(self):
         WebDriverWait(self.driver, 10).until(
-            EC.element_to_be_clickable((By.XPATH, '//div[text()="Add card"]'))
+            EC.element_to_be_clickable(self.ADD_CARD_LOCATOR)
         )
         self.driver.find_element(*self.ADD_CARD_LOCATOR).click()
 
@@ -115,7 +115,7 @@ class UrbanRoutesPage:
 
     def click_link_button(self):
         WebDriverWait(self.driver, 10).until(
-            EC.element_to_be_clickable((By.XPATH, '//button[text()="Link"]'))
+            EC.element_to_be_clickable(self.LINK_BUTTON_LOCATOR)
         )
         self.driver.find_element(*self.LINK_BUTTON_LOCATOR).click()
 
@@ -127,7 +127,7 @@ class UrbanRoutesPage:
 
     def click_exit_cc(self):
         WebDriverWait(self.driver, 10).until(
-            EC.element_to_be_clickable((By.XPATH, '//div[@class="payment-picker open"]//button[@class="close-button section-close"]'))
+            EC.element_to_be_clickable(self.EXIT_CC_LOCATOR)
         )
         self.driver.find_element(*self.EXIT_CC_LOCATOR).click()
         time.sleep(1)
@@ -139,8 +139,7 @@ class UrbanRoutesPage:
 
     def blanket_and_handkerchiefs_order(self):
         WebDriverWait(self.driver, 10).until(
-            EC.element_to_be_clickable(
-                (By.XPATH, '//div[@class="r-sw-container"]//div[@class="r-sw"]'))
+            EC.element_to_be_clickable(self.BLANKET_AND_HANDKERCHIEF_LOCATOR)
         )
         self.driver.find_element(*self.BLANKET_AND_HANDKERCHIEF_LOCATOR).click()
         return self.driver.find_element(*self.BLANKET_AND_HANDKERCHIEF_CHECK).get_property('checked')
@@ -148,8 +147,7 @@ class UrbanRoutesPage:
     def ordering_ice_cream(self):
         for i in range(2):
             WebDriverWait(self.driver, 10).until(
-                EC.element_to_be_clickable(
-                    (By.XPATH, '//div[@class="r-counter-container"]//div[@class="r-counter-label"][text()="Ice cream"]/following-sibling::div[@class="r-counter"]//div[@class="counter-plus"]'))
+                EC.element_to_be_clickable(self.ICE_CREAM_LOCATOR)
             )
             self.driver.find_element(*self.ICE_CREAM_LOCATOR).click()
             print(f"Ice cream order {i + 1}")
@@ -161,8 +159,7 @@ class UrbanRoutesPage:
 
     def order_finalized(self):
         WebDriverWait(self.driver, 10).until(
-            EC.element_to_be_clickable(
-                (By.XPATH, '//button[@class="smart-button"]'))
+            EC.element_to_be_clickable(self.ORDER_LOCATOR)
         )
         self.driver.find_element(*self.ORDER_LOCATOR).click()
         return self.driver.find_element(*self.CAR_SEARCH_MODAL_LOCATOR).is_displayed()
