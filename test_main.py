@@ -20,7 +20,6 @@ class TestUrbanRoutes:
             print("Cannot connect to Urban Routes. Check the server is on and still running")
         cls.driver.get(data.URBAN_ROUTES_URL)
 
-    # Setting the addresses
     def test_set_route(self):
         from_text = self.routes_page.set_from_location(data.ADDRESS_FROM)
         to_text = self.routes_page.set_to_location(data.ADDRESS_TO)

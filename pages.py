@@ -2,9 +2,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-import data
 import time
-import re
 
 class UrbanRoutesPage:
     FROM_LOCATOR = (By.ID,'from')
@@ -76,7 +74,6 @@ class UrbanRoutesPage:
     def enter_phone_number(self, phone_text):
         self.driver.find_element(*self.ENTER_PHONE_NUMBER_LOCATOR).send_keys(phone_text)
 
-
     def click_next(self):
         WebDriverWait(self.driver, 10).until(
             EC.element_to_be_clickable((By.XPATH, '//button[text()="Next"]'))
@@ -111,16 +108,10 @@ class UrbanRoutesPage:
         self.driver.find_element(*self.CARD_NUMBER_LOCATOR).send_keys(card_number, Keys.TAB)
 
     def enter_cc_code(self, cc_code):
-        #WebDriverWait(self.driver, 10).until(
-        #    EC.element_to_be_clickable((By.ID, 'code'))
-        #)
-        #self.driver.find_element(*self.CC_CODE_LOCATOR).click()
         active_field =self.driver.switch_to.active_element
         active_field.send_keys(cc_code)
         active_field.send_keys(Keys.TAB)
         time.sleep(1)
-        #arguments[0].value = arguments[1];", element, cc_code)
-        #self.driver.execute_script("arguments[0].blur();", element)
 
     def click_link_button(self):
         WebDriverWait(self.driver, 10).until(
